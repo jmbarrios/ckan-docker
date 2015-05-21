@@ -1,0 +1,13 @@
+db:
+  build: ./contrib/docker/postgresql/
+solr:
+  build: ./contrib/docker/solr/
+ckan:
+  build: .
+  links:
+    - db
+    - solr
+  ports:
+    - "80:80"
+  environment:
+    - CKAN_LOCALE=es
